@@ -200,7 +200,7 @@ public abstract class FS {
 		static Duration getFsTimestampResolution(Path file) {
 			try {
 				Path dir = Files.isDirectory(file) ? file : file.getParent();
-				if (!dir.toFile().canWrite()) {
+				if (!Files.isWritable(dir)) {
 					// can not determine FileStore of an unborn directory or in
 					// a read-only directory
 					return FALLBACK_TIMESTAMP_RESOLUTION;
